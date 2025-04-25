@@ -1,14 +1,42 @@
 import Curso from "./clases/Curso.js";
-const javascript = new Curso(
-  "Curso de JavaScript",
-  "https://img-c.udemycdn.com/course/240x135/3425556_d8eb_2.jpg",
-  10
-);
-console.log(javascript);
 
-const element = document.getElementById("curso"); // Obtener el elemento del DOM
-element.innerHTML = `
-<img src="${javascript.getImagenMiniatura()}" alt="${javascript.getNombre()}" />
-<h3>${javascript.getNombre()}</h3>
-<span>Total de clases: ${javascript.getNumeroClases()} clases</span>
-`; 
+const element = document.getElementById("curso");
+const formulario = document.getElementById("formulario");
+const registrar = document.getElementById("registrar");
+
+function mostrarCurso(curso) {
+  const cnt = document.createElement("div");
+  cnt.classList.add("col");
+  const card = document.createElement("div");
+  card.classList.add("col", "shadow-sm", "rounded");
+  card.style.width = "22 rem";
+  card.innerHTML = `
+    <img src="${curso.getImagenMiniatura()}" class="card-img-top"/>
+    <div class="card-body">
+      <h5 class="card-title pt-2">${curso.getNombre()}</h5>
+      <p class="card-text">Duración: ${curso.getNumeroClases()} horas</p>
+    </div>
+  `;
+  cnt.appendChild(card);
+  element.appendChild(cnt);
+}
+
+function registrarCurso() {
+  const nombre = document.getElementById("nombre").value;
+  const link = document.getElementById("link").value;
+  const horas = document.getElementById("horas").value;
+  if (nombre === "" || link === "" || horas === "") {
+    alert("Por favor, completa todos los campos.");
+  } else {
+    const nuevoCurso = new Curso(nombre, link, horas);
+    mostrarCurso(nuevoCurso);
+  }
+}
+
+registrar.addEventListener("click", () => {
+  registrarCurso();
+});
+
+formulario.addEventListener("submit", (e) => {
+  e.preventDefault();
+});

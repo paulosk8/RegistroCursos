@@ -8,8 +8,24 @@
 </head>
 <body>
 <div class="container">
-    <div id="curso">
-
+    <h1 class="mt-4 mb-4">Registro asignaturas</h1>
+    <form id="formulario" class="row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 gx-3 gy-2 mb-4">
+        <div class="col-auto">
+            <input id="nombre" class="form-control" type="text" placeholder="Nombre del curso" required>
+        </div>
+        <div class="col-auto">
+            <input id="link" class="form-control"  type="text" placeholder="link de imagen" required>
+        </div>
+        <div class="col-auto">
+            <input id="horas" class="form-control" type="number" placeholder="Total de horas" required>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary" id="registrar">Guardar</button>
+        </div>
+    </form>
+    
+    <div id="curso" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 gx-3 gy-2">
+        
     </div>
 </div>
     <script type="module" src="./index.js"> </script>
